@@ -15,6 +15,7 @@ const fieldClass =
 export function Booking() {
   const { copy, locale } = useLocale();
   const [status, setStatus] = useState<Status>("idle");
+  const [formType, setFormType] = useState<"quick" | "detailed">("quick");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -105,9 +106,37 @@ export function Booking() {
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-5" noValidate>
-                <h3 className="font-display text-balance text-2xl tracking-[-0.01em]">
-                  {copy.booking.formTitle}
-                </h3>
+                <div className="flex flex-col gap-5 pb-2 sm:flex-row sm:items-center sm:justify-between">
+                  <h3 className="font-display text-balance text-2xl tracking-[-0.01em]">
+                    {copy.booking.formTitle}
+                  </h3>
+                  <div className="flex w-fit items-center gap-1 rounded-full border border-ivory/15 p-1 text-[0.68rem] tracking-[0.12em] uppercase">
+                    <button
+                      type="button"
+                      onClick={() => setFormType("quick")}
+                      className={`min-h-8 rounded-full px-4 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne ${
+                        formType === "quick"
+                          ? "bg-ivory text-ink"
+                          : "text-ivory/70 hover:bg-ivory/5 hover:text-ivory"
+                      }`}
+                      aria-pressed={formType === "quick"}
+                    >
+                      {copy.booking.quickInquiry}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormType("detailed")}
+                      className={`min-h-8 rounded-full px-4 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne ${
+                        formType === "detailed"
+                          ? "bg-ivory text-ink"
+                          : "text-ivory/70 hover:bg-ivory/5 hover:text-ivory"
+                      }`}
+                      aria-pressed={formType === "detailed"}
+                    >
+                      {copy.booking.detailedInquiry}
+                    </button>
+                  </div>
+                </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <label className="block text-sm text-ivory/70">
@@ -131,51 +160,65 @@ export function Booking() {
                   </label>
                 </div>
 
-                <label className="block text-sm text-ivory/70">
-                  {copy.booking.projectType}
-                  <select name="projectType" required className={fieldClass} defaultValue="">
-                    <option value="" disabled>
-                      —
-                    </option>
-                    {projectTypes.map((type) => (
-                      <option key={type.value} value={type.value}>
-                        {locale === "en" ? type.en : type.zh}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                {formType === "quick" ? (
+                  <label className="block text-sm text-ivory/70">
+                    {copy.booking.message}
+                    <textarea
+                      name="message"
+                      required
+                      rows={4}
+                      className={`${fieldClass} resize-y`}
+                    />
+                  </label>
+                ) : (
+                  <>
+                    <label className="block text-sm text-ivory/70">
+                      {copy.booking.projectType}
+                      <select name="projectType" required className={fieldClass} defaultValue="">
+                        <option value="" disabled>
+                          —
+                        </option>
+                        {projectTypes.map((type) => (
+                          <option key={type.value} value={type.value}>
+                            {locale === "en" ? type.en : type.zh}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <label className="block text-sm text-ivory/70">
-                    {copy.booking.dates}
-                    <input name="dates" required className={fieldClass} />
-                  </label>
-                  <label className="block text-sm text-ivory/70">
-                    {copy.booking.location}
-                    <input name="location" required className={fieldClass} />
-                  </label>
-                </div>
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <label className="block text-sm text-ivory/70">
+                        {copy.booking.dates}
+                        <input name="dates" required className={fieldClass} />
+                      </label>
+                      <label className="block text-sm text-ivory/70">
+                        {copy.booking.location}
+                        <input name="location" required className={fieldClass} />
+                      </label>
+                    </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <label className="block text-sm text-ivory/70">
-                    {copy.booking.duration}
-                    <input name="duration" required className={fieldClass} />
-                  </label>
-                  <label className="block text-sm text-ivory/70">
-                    {copy.booking.budget}
-                    <input name="budget" className={fieldClass} />
-                  </label>
-                </div>
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <label className="block text-sm text-ivory/70">
+                        {copy.booking.duration}
+                        <input name="duration" required className={fieldClass} />
+                      </label>
+                      <label className="block text-sm text-ivory/70">
+                        {copy.booking.budget}
+                        <input name="budget" className={fieldClass} />
+                      </label>
+                    </div>
 
-                <label className="block text-sm text-ivory/70">
-                  {copy.booking.details}
-                  <textarea
-                    name="details"
-                    required
-                    rows={4}
-                    className={`${fieldClass} resize-y`}
-                  />
-                </label>
+                    <label className="block text-sm text-ivory/70">
+                      {copy.booking.details}
+                      <textarea
+                        name="details"
+                        required
+                        rows={4}
+                        className={`${fieldClass} resize-y`}
+                      />
+                    </label>
+                  </>
+                )}
 
                 <button
                   type="submit"

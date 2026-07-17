@@ -60,51 +60,53 @@ export function SelectedWork() {
           ))}
         </Reveal>
 
-        <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3 lg:gap-5">
-          {items.map((item, i) => {
-            const heightClass =
-              item.aspect === "tall"
-                ? "aspect-[3/4.4]"
-                : item.aspect === "square"
-                  ? "aspect-square"
-                  : "aspect-[3/4]";
+        <div className="-mx-5 mt-10 flex snap-x snap-mandatory overflow-x-auto px-5 pb-8 [scrollbar-width:none] md:-mx-8 md:px-8 [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-max gap-4 lg:gap-5">
+            {items.map((item, i) => {
+              const heightClass =
+                item.aspect === "tall"
+                  ? "aspect-[3/4.4]"
+                  : item.aspect === "square"
+                    ? "aspect-square"
+                    : "aspect-[3/4]";
 
-            return (
-              <motion.button
-                key={item.id}
-                type="button"
-                className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-stone/10 text-left transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[0.985] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne lg:mb-5"
-                initial={reduce ? false : { opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: 0.7,
-                  delay: Math.min(i * 0.05, 0.25),
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                onClick={() => {
-                  const fullIndex = portfolio.findIndex((p) => p.id === item.id);
-                  setActive(fullIndex >= 0 ? fullIndex : i);
-                }}
-              >
-                <div className={`relative overflow-hidden ${heightClass}`}>
-                  <Image
-                    src={item.src}
-                    alt={item.alt[locale]}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/15" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:opacity-100">
-                    <p className="text-[0.7rem] tracking-[0.16em] text-ivory uppercase">
-                      {filterLabel(item.category)}
-                    </p>
+              return (
+                <motion.button
+                  key={item.id}
+                  type="button"
+                  className="group relative block w-[85vw] shrink-0 snap-center overflow-hidden rounded-sm bg-stone/10 text-left transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[0.985] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne sm:w-[42vw] lg:w-[30vw]"
+                  initial={reduce ? false : { opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{
+                    duration: 0.7,
+                    delay: Math.min(i * 0.05, 0.25),
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  onClick={() => {
+                    const fullIndex = portfolio.findIndex((p) => p.id === item.id);
+                    setActive(fullIndex >= 0 ? fullIndex : i);
+                  }}
+                >
+                  <div className={`relative w-full ${heightClass}`}>
+                    <Image
+                      src={item.src}
+                      alt={item.alt[locale]}
+                      fill
+                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 30vw"
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/15" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:opacity-100">
+                      <p className="text-[0.7rem] tracking-[0.16em] text-ivory uppercase">
+                        {filterLabel(item.category)}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.button>
-            );
-          })}
+                </motion.button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
