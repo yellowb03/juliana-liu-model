@@ -1,0 +1,22 @@
+# Dependencies & build
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Env & local tooling
+.env*
+.vercel
+.DS_Store
+*.pem
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Debug crop overlays
+website/public/images/crops/
