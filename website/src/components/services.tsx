@@ -14,10 +14,10 @@ export function Services() {
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 className="font-display text-4xl tracking-[-0.02em] md:text-5xl">
+          <h2 className="font-display text-balance text-4xl tracking-[-0.02em] md:text-5xl">
             {copy.services.title}
           </h2>
-          <p className="mt-4 max-w-lg text-ivory/65">{copy.services.subtitle}</p>
+          <p className="mt-4 max-w-lg text-pretty text-ivory/65">{copy.services.subtitle}</p>
         </Reveal>
 
         <ul className="mt-12 divide-y divide-ivory/10 border-y border-ivory/10">

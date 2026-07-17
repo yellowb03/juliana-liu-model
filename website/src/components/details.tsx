@@ -15,7 +15,7 @@ export function Details() {
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 className="font-display text-4xl tracking-[-0.02em] md:text-5xl">
+          <h2 className="font-display text-balance text-4xl tracking-[-0.02em] md:text-5xl">
             {copy.details.title}
           </h2>
         </Reveal>
@@ -45,7 +45,7 @@ export function Details() {
             <DownloadSimple size={16} weight="light" />
             {copy.details.download}
           </a>
-          <p className="text-sm text-ivory/55 sm:max-w-md">{copy.details.note}</p>
+          <p className="text-sm text-pretty text-ivory/55 sm:max-w-md">{copy.details.note}</p>
         </Reveal>
       </div>
     </section>

@@ -37,7 +37,7 @@ export function SelectedWork() {
     <section id="work" className="bg-ink px-5 py-24 text-ivory md:px-8 md:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 className="font-display text-4xl tracking-[-0.02em] md:text-5xl">
+          <h2 className="font-display text-balance text-4xl tracking-[-0.02em] md:text-5xl">
             {copy.work.title}
           </h2>
         </Reveal>
@@ -73,7 +73,7 @@ export function SelectedWork() {
               <motion.button
                 key={item.id}
                 type="button"
-                className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-stone/10 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne lg:mb-5"
+                className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-stone/10 text-left transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[0.985] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne lg:mb-5"
                 initial={reduce ? false : { opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
@@ -93,7 +93,7 @@ export function SelectedWork() {
                     alt={item.alt[locale]}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035]"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/15" />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:opacity-100">

@@ -10,7 +10,7 @@ import { Reveal } from "@/components/reveal";
 type Status = "idle" | "sending" | "success";
 
 const fieldClass =
-  "mt-2 w-full rounded-sm border border-ivory/15 bg-ink/40 px-4 py-3 text-[0.95rem] text-ivory placeholder:text-ivory/35 outline-none transition-[border-color,box-shadow] duration-300 focus:border-champagne/70 focus:shadow-[0_0_0_1px_rgba(185,154,104,0.35)]";
+  "mt-2 w-full rounded-sm border border-ivory/15 bg-ink/40 px-4 py-3 text-base text-ivory placeholder:text-ivory/35 outline-none transition-[border-color,box-shadow] duration-300 focus:border-champagne/70 focus:shadow-[0_0_0_1px_rgba(185,154,104,0.35)]";
 
 export function Booking() {
   const { copy, locale } = useLocale();
@@ -43,7 +43,7 @@ export function Booking() {
       <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-24 md:grid-cols-12 md:gap-10 md:px-8 md:py-32">
         <div className="md:col-span-5">
           <Reveal>
-            <h2 className="font-display text-[2.4rem] leading-[1.1] tracking-[-0.02em] md:text-5xl">
+            <h2 className="font-display text-balance text-[2.4rem] leading-[1.1] tracking-[-0.02em] md:text-5xl">
               {copy.booking.title}
             </h2>
           </Reveal>
@@ -89,10 +89,10 @@ export function Booking() {
           >
             {status === "success" ? (
               <div className="py-8 text-center md:py-12">
-                <p className="font-display text-3xl tracking-[-0.02em]">
+                <p className="font-display text-balance text-3xl tracking-[-0.02em]">
                   {copy.booking.successTitle}
                 </p>
-                <p className="mx-auto mt-4 max-w-md text-ivory/70">
+                <p className="mx-auto mt-4 max-w-md text-pretty text-ivory/70">
                   {copy.booking.successBody}
                 </p>
                 <button
@@ -105,7 +105,7 @@ export function Booking() {
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-5" noValidate>
-                <h3 className="font-display text-2xl tracking-[-0.01em]">
+                <h3 className="font-display text-balance text-2xl tracking-[-0.01em]">
                   {copy.booking.formTitle}
                 </h3>
 

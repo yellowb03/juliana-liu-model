@@ -27,12 +27,12 @@ export function About() {
 
         <div className="md:col-span-7 md:pl-4">
           <Reveal>
-            <h2 className="font-display text-4xl tracking-[-0.02em] md:text-5xl">
+            <h2 className="font-display text-balance text-4xl tracking-[-0.02em] md:text-5xl">
               {copy.about.title}
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="mt-6 max-w-xl text-[1.02rem] leading-[1.75] text-ivory/78 md:mt-8 md:text-lg">
+            <p className="mt-6 max-w-xl text-pretty text-[1.02rem] leading-[1.75] text-ivory/78 md:mt-8 md:text-lg">
               {copy.about.bio}
             </p>
           </Reveal>
